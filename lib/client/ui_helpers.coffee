@@ -1,0 +1,1 @@
+UI.registerHelper 'routeIs', (route) -> Router.current().route.getName() is route

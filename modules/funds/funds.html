@@ -1,0 +1,10 @@
+<template name="funds">
+  <h1>the funds</h1>
+  <ul>
+    {{#each funds}}
+      <li>
+        <a href="{{pathFor 'fund'}}">{{repo.name}} [{{issue.number}}] : {{issue.title}}</a>
+      </li>
+    {{/each}}
+  </ul>
+</template>
