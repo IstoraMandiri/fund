@@ -1,0 +1,36 @@
+<template name="repository_picker">
+  <h1>Start a New Fund Raising</h1>
+
+  {{#unless loaded}}
+    <div class="pull-right text-loading"></div>
+  {{/unless}}
+
+  <!--
+  <h2>Select a Repository:</h2>
+  <div class="list-group">
+    <a href="#" class="list-group-item active">Pick a Repository</a>
+    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+    <a href="#" class="list-group-item">Morbi leo risus</a>
+    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+    <a href="#" class="list-group-item">Vestibulum at eros</a>
+  </div>
+  -->
+  <ul>
+    {{#each repos}}
+      <li class='repo'>
+        <div class="repo-name">
+          {{name}}
+        </div>
+        {{#if issues}}
+          <ul>
+            {{#each issues}}
+              <li class='issue-name'>
+                {{number}}: {{title}}
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+</template>
