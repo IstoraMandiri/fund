@@ -20,3 +20,13 @@
 <template name="issue_finder_issue_cell">
   {{number}} <a href="#" class='new-issue'>{{title}}</a>
 </template>
+
+<template name="issue_finder_loading_bar">
+  <div class="issue-finder-loading-bar">
+    <h2>Creating Fund</h2>
+    <h3>Please wait...</h3>
+    <div class="spinner-container">
+      {{> spinner}}
+    </div>
+  </div>
+</template>

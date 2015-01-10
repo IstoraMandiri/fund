@@ -52,7 +52,8 @@ Template.issue_finder_issue_cell.events
         title: 'Please Confirm'
         bodyHtml: """
         <p>You are about to create a new fund for:</p>
-        <h3>#{thisIssue.repository.full_name}</h3>
+        <h3><small>Issue</small> #{thisIssue.number} <a href="#{thisIssue.html_url}" target="_blank">#{thisIssue.title}</a></h3>
+        <h3><small>Repository</small> <a href="#{thisIssue.repository.html_url}" target="_blank">#{thisIssue.repository.full_name}</a></h3>
         """
         leftButtons: [
           html: 'Cancel'
@@ -62,7 +63,8 @@ Template.issue_finder_issue_cell.events
           color: 'success'
           fn: (e, tmpl) ->
             confirmModal.modal('hide')
-            waitModal = EZModal 'Please Wait...'
+            waitModal = EZModal
+              template: 'issue_finder_loading_bar'
             Meteor.call 'createFund',
               issue_number: thisIssue.number
               repo_name: thisIssue.repository.full_name
