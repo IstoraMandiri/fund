@@ -1,9 +1,7 @@
 issues = new ReactiveVar null
 
 Router.route '/create',
-
   template: 'issue_finder'
-
   data:
     issues: -> issues.get()
 
@@ -23,12 +21,14 @@ Router.route '/create',
 Template.issue_finder.helpers
   tableSettings: ->
     collection: issues.get()
+    rowClass: (row) -> 'success' if Fund.cols.Funds.findOne 'issue.id' : row.id
+
     rowsPerPage : 30
     fields: [
       key: 'created_at'
       label: 'Created'
     ,
-      key:'repository.full_name'
+      key: 'repository.full_name'
       label: "Repo Name"
     ,
       label: 'Issue'
@@ -44,21 +44,38 @@ Template.issue_finder_issue_cell.events
     e.preventDefault()
     $target = $(e.currentTarget)
     exsistingFund = Fund.cols.Funds.findOne {creatorId: Meteor.userId() , 'issue.id': @id}
-
+    thisIssue = @
     if exsistingFund
       Router.go 'fund' , _id: exsistingFund._id
+    else
+      confirmModal = EZModal
+        title: 'Please Confirm'
+        bodyHtml: """
+        <p>You are about to create a new fund for:</p>
+        <h3>#{thisIssue.repository.full_name}</h3>
+        """
+        leftButtons: [
+          html: 'Cancel'
+        ]
+        rightButtons: [
+          html: 'Confirm'
+          color: 'success'
+          fn: (e, tmpl) ->
+            confirmModal.modal('hide')
+            waitModal = EZModal 'Please Wait...'
+            Meteor.call 'createFund',
+              issue_number: thisIssue.number
+              repo_name: thisIssue.repository.full_name
+            , (err, fundId) ->
+              waitModal.modal('hide')
+              if err
+                EZModal
+                  title: "Error!"
+                  body: err.error
+              else
+                Router.go 'fund', _id: fundId
+                EZModal
+                  title: 'Setup Wizard'
+                  body: 'Blah blah blah'
+        ]
 
-    else unless $target.hasClass 'text-loading' # prevent double clicking
-      $target.addClass 'text-loading'
-      Meteor.call 'createFund',
-        issue_number: @number
-        repo_name: @repository.full_name
-      , (err, fundId) ->
-        if err
-          EZModal
-            title: "Error!"
-            body: err.error
-        else
-          Router.go 'fund', _id: fundId
-
-        $target.removeClass 'text-loading'

@@ -5,16 +5,16 @@
 - Implement Fund Editing
 	- Minimum requirements for publish
 		- target amount
-		- conclusion datetime	
+		- conclusion datetime
 - `Popular` algorithm
+- implement paypal* || bitcoin || wepay  *preferred?
 - Search funds
 - Proper pub/sub
+- github comments css
 - Implement commenting via github?
 	- will it get too frangmented if not?
 	- potential issue with deleted/edited github comments
-	- Probably need to implement our own system
-- github comments css
-- implement ( paypal | bitcoin | wepay )
+	- Probably need to implement our own system to prevent editing
 
 # Maybe MVP
 
@@ -40,3 +40,10 @@
 	-  receive email updates
 - Upload fund image, video, etc. more customisation. custom css?
 - Follow funds
+
+# Ideas
+
+- Private funding
+	- If a fund is made on a private repo, only allow collaborators to see and pledge
+	- Take a highger cut of the revenue?
+	- Invite code
