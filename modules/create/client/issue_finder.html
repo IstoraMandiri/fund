@@ -1,6 +1,11 @@
 <template name="issue_finder">
-  <h2>Please select an issue you own to create a fund</h2>
-  <p>Currently you must be an owner of the Repo or member of the Organisation</p>
+  <h2>Please select a valid issue to create a fund</h2>
+  <p>Issues are valid if:</p>
+  <ul>
+    <li>The issue is open</li>
+    <li>You are a collaborator of the repository</li>
+    <li>The repositroy is public</li>
+  </ul>
 
   {{#if issues}}
     {{> reactiveTable settings=tableSettings}}
@@ -13,5 +18,5 @@
 
 
 <template name="issue_finder_issue_cell">
-  <a href="#" class='new-issue'>{{number}} {{title}}</a>
+  {{number}} <a href="#" class='new-issue'>{{title}}</a>
 </template>

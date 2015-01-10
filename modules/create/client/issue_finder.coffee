@@ -15,13 +15,14 @@ Router.route '/create',
         filter: 'all'
         state: 'open'
       .done (data) ->
-        issues.set data
+        # TODO: fiter-out private issues repos in API request instead of on client
+        publicIssues = _.filter data, (issue) -> issue.repository.private is false
+        issues.set publicIssues
     @next()
 
 Template.issue_finder.helpers
   tableSettings: ->
     collection: issues.get()
-    rowClass: (obj) -> if obj.repository.private then 'text-muted'
     rowsPerPage : 30
     fields: [
       key: 'created_at'
@@ -33,10 +34,6 @@ Template.issue_finder.helpers
       label: 'Issue'
       key: 'title'
       tmpl: Template['issue_finder_issue_cell']
-    ,
-      label: 'Type'
-      key: 'repository.private'
-      fn: (val) -> if val then 'Private' else 'Public'
     ]
 
 Template.issue_finder_issue_cell.events
