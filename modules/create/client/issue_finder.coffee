@@ -34,6 +34,9 @@ Template.issue_finder.helpers
       label: 'Issue'
       key: 'title'
       tmpl: Template['issue_finder_issue_cell']
+    ,
+      label: 'Comments'
+      key: 'comments'
     ]
 
 Template.issue_finder_issue_cell.events

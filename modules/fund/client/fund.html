@@ -1,0 +1,35 @@
+<template name="fund">
+  <div class="back"><a href="{{urlFor 'create'}}">Back to My Issues</a></div>
+  <h2>
+    <a href="{{fund.repo.owner.html_url}}" target="_blank">{{fund.repo.owner.login}}</a> /
+    <a href="{{fund.repo.html_url}}" target="_blank">{{fund.repo.name}}</a>
+  </h2>
+  <h3>{{fund.issue.number}} <a href="{{fund.issue.html_url}}" target="_blank">#{{fund.issue.title}}</a></h3>
+  <p>Issue Created by <a href="{{fund.issue.user.html_url}}" target="_blank">{{fund.issue.user.login}}</a> at {{fund.issue.created_at}}</p>
+  <p>Fund Created by <a href="{{fund.creator.profile.html_url}}" target="_blank">{{fund.creator.profile.login}}</a> at {{fund.createdAt}}</p>
+  <hr>
+  <p>Tabs here for comments, bounty info, etc.</p>
+  <hr>
+  <h5>Issue Body</h5>
+  {{#markdown}}{{fund.issue.body}}{{/markdown}}
+  <hr>
+  <h5>Github Comments</h5>
+  <ul class="list-group">
+    {{#each githubComments}}
+      <li class="list-group-item">
+        <div class="github-comment">
+          <div class="github-commment-info">
+            <h5><a href="{{user.html_url}}" target="_blank">{{user.login}}</a>, <small><a href="{{html_url}}" target="_blank">{{created_at}}</a></small></h5>
+          </div>
+          <div class="github-comment-body">
+            {{#markdown}}{{body}}{{/markdown}}
+          </div>
+        </div>
+      </li>
+    {{else}}
+    <li class="list-group-item">
+      <p>No Github Comments</p>
+    </li>
+  {{/each}}
+  </ul>
+</template>
