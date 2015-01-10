@@ -6,10 +6,6 @@
 	- Minimum requirements for publish
 		- target amount
 		- conclusion datetime	
-	- Publish function
-		- Email followers?
-		- Post message to issue?
-			- Ability to cusomise message (eg. linkedin)
 - `Popular` algorithm
 - Search funds
 - Proper pub/sub
@@ -20,6 +16,19 @@
 - github comments css
 - implement ( paypal | bitcoin | wepay )
 
+# Maybe MVP
+
+- Triggers for
+	- Fund CRUD
+	- Pledge Creation
+	- Goal Reached
+	- Goal Missed
+	- etc...
+- Triggers can pipe to
+	- Email
+	- In-app notification
+	- Github Comment
+- Option for owners to personalise triggers (eg. on publish)
 
 # Afer MVP
 
@@ -29,3 +38,5 @@
 	- Via logged in user
 - Follow this fund
 	-  receive email updates
+- Upload fund image, video, etc. more customisation. custom css?
+- Follow funds
