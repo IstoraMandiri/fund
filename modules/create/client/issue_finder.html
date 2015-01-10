@@ -1,0 +1,17 @@
+<template name="issue_finder">
+  <h2>Please select an issue you own to create a fund</h2>
+  <p>Currently you must be an owner of the Repo or member of the Organisation</p>
+
+  {{#if issues}}
+    {{> reactiveTable settings=tableSettings}}
+  {{else}}
+    <p>Fetching your issues...</p>
+  {{/if}}
+
+  <p>Can't find any issues? Please start by creating one on a repository you have write permission to.</p>
+</template>
+
+
+<template name="issue_finder_issue_cell">
+  <a href="#" class='new-issue'>{{number}} {{title}}</a>
+</template>
