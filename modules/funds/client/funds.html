@@ -1,0 +1,8 @@
+<template name="funds">
+  <h1>Latest Funds</h1>
+  {{> reactiveTable settings=tableSettings}}
+</template>
+
+<template name="funds_issue_cell">
+  <a href="{{pathFor 'fund'}}">{{issue.title}}</a>
+</template>

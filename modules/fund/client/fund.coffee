@@ -14,3 +14,8 @@ Router.route '/fund/:_id',
     thisId = @params._id
     fund: -> Fund.cols.Funds.findOne thisId
     githubComments: -> githubComments.get thisId
+
+Template.fund.events
+  'click .history-back a' : (e) ->
+    e.preventDefault()
+    history.back()
