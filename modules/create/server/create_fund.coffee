@@ -1,6 +1,6 @@
 cleanUrls = (obj) ->
   for key, val of obj
-    if key.indexOf('_url') > -1
+    if key.indexOf('_url') > -1 and key isnt 'html_url'
       delete obj[key]
     else if val is Object(val)
       val = cleanUrls(val)
@@ -35,11 +35,13 @@ Meteor.methods
     repoRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}" # get public repo details
     issueRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/issues/#{options.issue_number}" # get public issue details
 
+
     fund =
       published: false
       creatorId: user._id
       issue: cleanUrls issueRes.data
       repo: cleanUrls repoRes.data
+      createdAt: new Date()
 
     if fund.repo.private isnt false
       throw new Meteor.Error 'Only public repos are supported right now'

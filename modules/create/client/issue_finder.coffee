@@ -40,7 +40,12 @@ Template.issue_finder_issue_cell.events
   'click .new-issue' : (e) ->
     e.preventDefault()
     $target = $(e.currentTarget)
-    unless $target.hasClass 'text-loading' # prevent double clicking
+    exsistingFund = Fund.cols.Funds.findOne {creatorId: Meteor.userId() , 'issue.id': @id}
+
+    if exsistingFund
+      Router.go 'fund' , _id: exsistingFund._id
+
+    else unless $target.hasClass 'text-loading' # prevent double clicking
       $target.addClass 'text-loading'
       Meteor.call 'createFund',
         issue_number: @number
@@ -51,6 +56,6 @@ Template.issue_finder_issue_cell.events
             title: "Error!"
             body: err.error
         else
-          Router.go 'fund', {_id: fundId}
+          Router.go 'fund', _id: fundId
 
         $target.removeClass 'text-loading'

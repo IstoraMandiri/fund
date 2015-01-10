@@ -16,6 +16,6 @@ twbs:bootstrap
 accounts-github
 reactive-var
 reactive-dict
-showdown
 hitchcott:ez-modal
 aslagle:reactive-table
+chuangbo:marked
