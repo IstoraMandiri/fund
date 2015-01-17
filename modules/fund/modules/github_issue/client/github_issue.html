@@ -13,7 +13,7 @@
     <div class="col-sm-12">
       <h3>#{{number}} <a href="{{html_url}}" target="_blank">{{title}}</a></h3>
       <h4>
-        <small>Opened by</small> <a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser size='small' shape='circle'}} {{user.login}}</a>, {{created_at}}. <small>Updated </small> {{updated_at}}
+        <small>Created by</small> <a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser size='small' shape='circle'}} {{user.login}}</a>, {{formatDate created_at}} <small>updated {{formatDate updated_at}}</small>
     </h4>
   </div>
   <div class="col-sm-12">
@@ -31,7 +31,7 @@
         <li class="list-group-item">
           <div class="github-comment">
             <div class="github-commment-info">
-              <h5><a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser shape='circle'}} {{user.login}}</a>, <small><a href="{{html_url}}" target="_blank">{{created_at}}</a></small></h5>
+              <h5><a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser shape='circle'}} {{user.login}}</a>, <a href="{{html_url}}" target="_blank">{{formatDate created_at}}</a></h5>
             </div>
             <div class="github-comment-body">
               {{#markdown}}{{body}}{{/markdown}}
