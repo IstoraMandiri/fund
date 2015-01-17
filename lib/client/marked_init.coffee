@@ -5,7 +5,9 @@ emojis = {"+1":"https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.p
 marked.setOptions
   renderer: new marked.Renderer()
   gfm: true
-  emoji: (key) -> "<img src='#{emojis[key]}' class='marked-emoji' width='20' height='20'/>"
+  emoji: (key) ->
+    if emojis[key]?
+      "<img src='#{emojis[key]}' class='marked-emoji' width='20' height='20'/>"
   tables: true
   breaks: false
   pedantic: false
