@@ -1,7 +1,7 @@
 <template name="fundDetailsTab">
   <div class="row">
     <div class="col-sm-8">
-      {{#markdown}}{{fund.description}}{{/markdown}}
+      {{#markdown}}{{{fund.body}}}{{/markdown}}
     </div>
     <div class="col-sm-4">
       <!-- essential details such as current amount -->
@@ -19,15 +19,3 @@
   {{{toJSON}}}
 </template>
 
-<template name='creatorProfile'>
-  <div class="row creator-profile">
-    <div class="col-sm-3">
-      {{> avatar user=avatarUser class='big-avatar'}}
-    </div>
-    <div class="col-sm-9">
-      <h1>{{profile.name}}</h1>
-      <h2>Git: {{profile.login}}</h2>
-      <h2>{{profile.company}}</h2>
-    </div>
-  </div>
-</template>

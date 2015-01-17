@@ -18,6 +18,11 @@ helpers =
     else
       moment(date).fromNow()
 
+  githubMarkdown : (text) ->
+    console.log 'text', text
+    console.log marked text
+    return text
+
 # register helpers
 for key, val of helpers
   UI.registerHelper key, val

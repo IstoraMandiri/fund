@@ -1,9 +1,9 @@
-activeTab = new ReactiveVar()
+activeTab = new ReactiveDict()
 
 Router.route '/fund/:_id', ->
   fund = => App.cols.Funds.findOne @params._id
 
-  activeTab.set 'fundDetails'
+  activeTab.setDefault @params._id, 'fundDetails'
 
   if fund()
     @render 'fund',
@@ -15,8 +15,8 @@ Router.route '/fund/:_id', ->
 
 
 Template.fund.helpers
-  tabTemplate: -> Template["#{activeTab.get()}Tab"]
-  activeTabIs: (tab) -> activeTab.get() is tab
+  tabTemplate: -> Template["#{activeTab.get(@_id)}Tab"]
+  activeTabIs: (tab) -> activeTab.get(@_id) is tab
   isOwner: -> @creatorId is Meteor.userId()
   fundCreatorIsIssueCreator: -> @creatorId is @
 
@@ -26,4 +26,4 @@ Template.fund.events
     history.back()
 
   'click .tab-switch' : (e) ->
-    activeTab.set $(e.currentTarget).data('tab')
+    activeTab.set @_id, $(e.currentTarget).data('tab')

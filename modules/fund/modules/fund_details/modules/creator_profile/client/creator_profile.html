@@ -1,0 +1,12 @@
+<template name='creatorProfile'>
+  <div class="row creator-profile">
+    <div class="col-xs-3">
+      {{> avatar user=avatarUser class='big-avatar'}}
+    </div>
+    <div class="col-xs-9">
+      <h1>{{profile.name}}</h1>
+      <h2>Git: {{profile.login}}</h2>
+      <h2>{{profile.company}}</h2>
+    </div>
+  </div>
+</template>

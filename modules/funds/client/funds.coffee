@@ -13,8 +13,11 @@ Template.funds.helpers
       key: 'repo.full_name'
       label: "Repo Name"
     ,
-      label: 'Issue'
-      key: 'issue.title'
+      label: '#'
+      key: 'issue.number'
+    ,
+      label: 'Name'
+      key: 'fund.title'
       tmpl: Template['funds_issue_cell']
     ,
       label: 'Creator'

@@ -6,6 +6,19 @@ cleanUrls = (obj) ->
       val = cleanUrls(val)
   return obj
 
+cleanFund = (rawIssue) ->
+  fund = _.pick cleanUrls(rawIssue), "body", "title"
+
+  fund.body = """
+  ## Original Issue:
+  #{fund.body}
+  """
+
+  fund.amountRaised = 0
+  fund.stars = []
+
+  return fund
+
 Meteor.methods
   createFund : (options) ->
     unless options.issue_number and options.repo_name
@@ -33,11 +46,13 @@ Meteor.methods
     repoRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}" # get public repo details
     issueRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/issues/#{options.issue_number}" # get public issue details
 
+    # TODO integrate into simple schema or collection2
     fund =
       published: false
       creatorId: user._id
       creatorIsCollaborator: isCollaborator.headers.status is "204 No Content"
       issue: cleanUrls issueRes.data
+      fund: cleanFund issueRes.data
       repo: cleanUrls repoRes.data
       createdAt: new Date()
 

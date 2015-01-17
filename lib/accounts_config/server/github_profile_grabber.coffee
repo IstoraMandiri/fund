@@ -11,7 +11,7 @@ Accounts.onCreateUser (options, user) ->
     console.log result
     throw result.error
 
-  profile = _.pick(result.data, "login", "name", "avatar_url", "url", "company", "blog", "location", "email", "bio", "html_url")
+  profile = _.pick(result.data, "login", "name", "url", "company", "blog", "location", "email", "bio", "html_url")
   user.profile = profile
 
   return user

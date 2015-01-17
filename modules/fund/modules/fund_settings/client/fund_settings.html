@@ -1,3 +1,15 @@
 <template name="fundSettingsTab">
-  <h3>Settings</h3>
+  <p>Todo add a submenu</p>
+  <form class='fund-settings'>
+    <button type="submit" class="pull-right save-changes btn btn-success">Save Changes</button>
+    <h4>Fund Details</h4>
+    <div class="form-group">
+      <label>Fund Title</label>
+      <input type="text" class="form-control" name='fund.title' value='{{fund.title}}'>
+    </div>
+    <div class="form-group">
+      <label>Fund Description (supports <a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GFM</a>)</label>
+      <textarea class="form-control description-input" name='fund.body'>{{fund.body}}</textarea>
+    </div>
+  </form>
 </template>
