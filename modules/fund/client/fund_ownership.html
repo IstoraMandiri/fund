@@ -3,7 +3,7 @@
     {{#each owners}}
       <div class="fund-owner">
         <a href="{{user.html_url}}" target="_blank">
-          {{> avatar user=avatarUser shape='circle' size='small'}}
+          {{> myAvatar login=user.login shape='circle' size='30'}}
           {{user.login}}
         </a>
         {{#if collaborator}}<span class="label label-success">Collaborator</span>{{/if}}
@@ -12,4 +12,3 @@
     {{/each}}
   </div>
 </template>
-

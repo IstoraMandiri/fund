@@ -1,14 +1,10 @@
 <template name="fundDetailsTab">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-md-8">
       {{#markdown}}{{{fund.body}}}{{/markdown}}
     </div>
-    <div class="col-sm-4">
-      <!-- essential details such as current amount -->
-      <h5>Fund Started {{formatDate createdAt}}</h5>
-      {{#if endingAt}}
-        <h5>Fund Ends {{formatDate endingAt}}</h5>
-      {{/if}}
+    <div class="col-md-4 hidden-sm">
+      {{> fundLatestPledges}}
     </div>
   </div>
   <hr>
@@ -18,4 +14,3 @@
   {{{toJSON creator}}}
   {{{toJSON}}}
 </template>
-

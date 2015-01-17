@@ -1,0 +1,37 @@
+<template name="fundLatestPledges">
+
+  <div class="panel panel-default fund-lastest-pledges">
+    <div class="panel-heading"><h5 style="margin:0;">Latest Pledges</h5></div>
+    <div class="panel-body">
+      {{#each countTo 5}}
+        <div class="row latest-pledge-item">
+          <div class="col-sm-3">
+            {{> myAvatar login=currentUser.services.github.username shape='circle' size='90'}}
+          </div>
+          <div class="col-sm-9">
+            <h5 class="name" style="margin:0;">
+              {{currentUser.profile.name}}
+            </h5>
+            <div class="amount">
+              $3,000
+            </div>
+            <div class="when">
+              4 Hours Ago
+            </div>
+          </div>
+        </div>
+      {{/each}}
+
+
+
+
+      <div class="row latest-pledge-item">
+        <div class="col-sm-12 text-center">
+          <a href="#">More Activity</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</template>

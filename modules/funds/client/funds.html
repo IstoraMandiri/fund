@@ -5,7 +5,7 @@
 
 <template name="funds_issue_cell">
   <a href="{{pathFor 'fund'}}">{{fund.title}}</a>
-  {{#unless _equal fund.title issue.title}}
+  {{#unless _equals fund.title issue.title}}
     <br><small>#{{issue.number}} {{issue.title}}</small>
   {{/unless}}
 

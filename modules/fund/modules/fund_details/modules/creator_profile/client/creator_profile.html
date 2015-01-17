@@ -1,7 +1,7 @@
 <template name='creatorProfile'>
   <div class="row creator-profile">
     <div class="col-xs-3">
-      {{> avatar user=avatarUser class='big-avatar'}}
+      {{> myAvatar login=profile.login size='200'}}
     </div>
     <div class="col-xs-9">
       <h1>{{profile.name}}</h1>

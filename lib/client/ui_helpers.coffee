@@ -1,5 +1,7 @@
 helpers =
-  _equal: (var1, var2) -> var1 is var2
+  _equals: (var1, var2) -> var1 is var2
+
+  _multiply: (var1, var2) -> var1 * var2
 
   toJSON: (obj) -> marked "```" + JSON.stringify((obj || @), null, 2) + "```"
 
@@ -18,10 +20,7 @@ helpers =
     else
       moment(date).fromNow()
 
-  githubMarkdown : (text) ->
-    console.log 'text', text
-    console.log marked text
-    return text
+  countTo: (num) -> [0...num]
 
 # register helpers
 for key, val of helpers
