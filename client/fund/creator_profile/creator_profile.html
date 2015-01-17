@@ -1,12 +1,26 @@
-<template name='creatorProfile'>
-  <div class="row creator-profile">
-    <div class="col-xs-3">
-      {{> myAvatar login=profile.login size='200'}}
+<template name='creatorProfileTab'>
+  {{#with creator}}
+    <div class="row creator-profile">
+      <div class="col-xs-3">
+        <div class="row">
+          <div class="col-sm-12">
+            {{> myAvatar login=profile.login size='200'}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-6">
+            <h5 style='margin:0;'>Stars: X</h5>
+          </div>
+          <div class="col-sm-6">
+            <h5 style='margin:0;'>Followers: Y</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-9">
+        <h1>{{profile.name}} <small>{{profile.login}}</small></h1>
+        {{{toJSON}}}
+      </div>
     </div>
-    <div class="col-xs-9">
-      <h1>{{profile.name}}</h1>
-      <h2>Git: {{profile.login}}</h2>
-      <h2>{{profile.company}}</h2>
-    </div>
-  </div>
+  {{/with}}
 </template>

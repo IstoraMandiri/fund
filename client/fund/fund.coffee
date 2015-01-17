@@ -16,14 +16,11 @@ Router.route '/fund/:_id', ->
 
 Template.fund.helpers
   tabTemplate: -> Template["#{activeTab.get(@_id)}Tab"]
-  activeTabIs: (tab) -> activeTab.get(@_id) is tab
+
+Template.fundSubMenu.helpers
   isOwner: -> @creatorId is Meteor.userId()
-  fundCreatorIsIssueCreator: -> @creatorId is @
+  activeTabIs: (tab) -> activeTab.get(@_id) is tab
 
-Template.fund.events
-  'click .history-back' : (e) ->
-    e.preventDefault()
-    history.back()
-
+Template.fundSubMenu.events
   'click .tab-switch' : (e) ->
     activeTab.set @_id, $(e.currentTarget).data('tab')

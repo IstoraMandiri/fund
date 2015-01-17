@@ -1,7 +1,6 @@
 <template name="fund">
   <div class="fund-container">
-<!--     <a class='btn btn-default history-back' href='#'>&lt; Back</a>
- -->    <div class="fund-header">
+    <div class="fund-header">
       <div class="row">
         <div class="col-md-8">
           {{> fundTitle}}
@@ -13,40 +12,7 @@
       </div>
     </div>
     <div class="fund-info">
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="{{#if activeTabIs 'fundDetails'}}active{{/if}}">
-          <a class='tab-switch' href="#" data-tab='fundDetails'>
-            <i class='fa fa-fw fa-code-fork'></i> Overview
-          </a>
-        </li>
-        <li role="presentation" class="{{#if activeTabIs 'devProfile'}}active{{/if}}">
-          <a class='tab-switch' href="#" data-tab='devProfile'>
-            <i class='fa fa-fw fa-keyboard-o'></i> Dev Profile
-          </a>
-        </li>
-        <li role="presentation" class="{{#if activeTabIs 'fundComments'}}active{{/if}}">
-          <a class='tab-switch' href="#" data-tab='fundComments'>
-            <i class='fa fa-fw fa-comments'></i>  Comments
-          </a>
-        </li>
-        <li role="presentation" class="{{#if activeTabIs 'githubIssue'}}active{{/if}}">
-          <a class='tab-switch' href="#" data-tab='githubIssue'>
-            <i class='fa fa-fw fa-github-alt'></i> Git Issue
-          </a>
-        </li>
-        <li role="presentation" class="{{#if activeTabIs 'fundActivity'}}active{{/if}}">
-          <a class='tab-switch' href="#" data-tab='fundActivity'>
-            <i class='fa fa-fw fa-line-chart'></i> Activity
-          </a>
-        </li>
-        {{#if isOwner}}
-          <li role="presentation" class="{{#if activeTabIs 'fundSettings'}}active{{/if}}">
-            <a class='tab-switch' href="#" data-tab='fundSettings'>
-              <i class='fa fa-fw fa-cog'></i> Settings
-            </a>
-          </li>
-        {{/if}}
-      </ul>
+      {{> fundSubMenu}}
       {{> tabTemplate}}
     </div>
     <div class="fund-footer">
@@ -60,12 +26,50 @@
     <h2>{{fund.title}}</h2>
     <h3>
       <a href="{{repo.owner.html_url}}" target="_blank">{{repo.owner.login}}</a>
-      /
+      <span class='text-muted'>/</span>
       <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a>
-      /
+      <span class='text-muted'>/</span>
       <a href="{{issue.html_url}}" target="_blank">{{issue.number}}</a>
-      /
+      <span class='text-muted'>/</span>
       <a href="{{creator.profile.html_url}}" target="_blank">{{creator.profile.login}}</a>
     </h3>
   </div>
+</template>
+
+
+<template name="fundSubMenu">
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="{{#if activeTabIs 'fundDetails'}}active{{/if}}">
+      <a class='tab-switch' href="#" data-tab='fundDetails'>
+        <i class='fa fa-fw fa-code-fork'></i> Overview
+      </a>
+    </li>
+    <li role="presentation" class="{{#if activeTabIs 'creatorProfile'}}active{{/if}}">
+      <a class='tab-switch' href="#" data-tab='creatorProfile'>
+        <i class='fa fa-fw fa-keyboard-o'></i> Dev Profile
+      </a>
+    </li>
+    <li role="presentation" class="{{#if activeTabIs 'fundComments'}}active{{/if}}">
+      <a class='tab-switch' href="#" data-tab='fundComments'>
+        <i class='fa fa-fw fa-comments'></i>  Comments
+      </a>
+    </li>
+    <li role="presentation" class="{{#if activeTabIs 'githubIssue'}}active{{/if}}">
+      <a class='tab-switch' href="#" data-tab='githubIssue'>
+        <i class='fa fa-fw fa-github-alt'></i> Git Issue
+      </a>
+    </li>
+    <li role="presentation" class="{{#if activeTabIs 'fundActivity'}}active{{/if}}">
+      <a class='tab-switch' href="#" data-tab='fundActivity'>
+        <i class='fa fa-fw fa-line-chart'></i> Activity
+      </a>
+    </li>
+    {{#if isOwner}}
+      <li role="presentation" class="{{#if activeTabIs 'fundSettings'}}active{{/if}}">
+        <a class='tab-switch' href="#" data-tab='fundSettings'>
+          <i class='fa fa-fw fa-cog'></i> Settings
+        </a>
+      </li>
+    {{/if}}
+  </ul>
 </template>
