@@ -26,5 +26,5 @@ helpers =
 for key, val of helpers
   UI.registerHelper key, val
 
-App = @App || {}
+@App || @App = {} # init @App if it isn't defined yet
 App.helpers = helpers
