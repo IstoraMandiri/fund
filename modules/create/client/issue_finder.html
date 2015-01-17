@@ -1,11 +1,5 @@
 <template name="issue_finder">
-  <h2>Please select a valid issue to create a fund</h2>
-  <p>Issues are valid if:</p>
-  <ul>
-    <li>The repositroy is public</li>
-    <li>The issue is open</li>
-  </ul>
-
+  <h2>Create a fund by specifying an open Github issue</h2>
   <hr>
   <h3><small>Either</small> Paste the Github issue URL</h3>
   <div class="input-group input-group-lg">
@@ -17,10 +11,12 @@
 
   <hr>
 
-  <h3><small>...or</small> Select from your available open issues</h3>
+  <h3><small>...or</small> Select from the repositories you can collaborate on</h3>
 
   {{#if issues}}
-    {{> reactiveTable settings=tableSettings}}
+    <div class="issues-table">
+      {{> reactiveTable settings=tableSettings}}
+    </div>
   {{else}}
     <p>Fetching your issues...</p>
   {{/if}}

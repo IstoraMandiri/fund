@@ -80,7 +80,7 @@ createFund = (thisIssue) ->
 Template.issue_finder.events
   'click .submit-github-url' : (e) ->
     url = $('#github-issue-url').val()
-    # https://github.com/TAPevents/tap-i18n/issues/43
+    # Example url: https://github.com/TAPevents/tap-i18n/issues/43
     # TODO: regex extracting for https://api.github.com/repos/:owner/:repo/issues/:number
     unless url.indexOf('https://github.com') is 0
       EZModal 'Invalid URL'

@@ -17,7 +17,7 @@ Meteor.methods
     unless githubToken
       throw new Meteor.Error 'You must be logged in using github to create a fund'
 
-
+    # TODO make the following run in parallel for speed
     syncGithubCall = (url, ignoreError) ->
       do Meteor.wrapAsync (callback) ->
         Meteor.http.get url,

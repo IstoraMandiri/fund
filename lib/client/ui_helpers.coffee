@@ -1,6 +1,10 @@
 helpers =
+  _equal: (var1, var2) -> var1 is var2
+
+  toJSON: (obj) -> marked "```" + JSON.stringify((obj || @), null, 2) + "```"
+
   avatarUser : (owner={}) ->
-    login = owner.login || @user?.login || @login
+    login = @services?.github?.username || owner.login || @user?.login || @login
     services:
       github:
         username: login

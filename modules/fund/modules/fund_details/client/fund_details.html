@@ -1,3 +1,33 @@
 <template name="fundDetailsTab">
-  <h5>Fund Started: {{createdAt}}</h5>
+  <div class="row">
+    <div class="col-sm-8">
+      {{#markdown}}{{fund.description}}{{/markdown}}
+    </div>
+    <div class="col-sm-4">
+      <!-- essential details such as current amount -->
+      <h5>Fund Started {{formatDate createdAt}}</h5>
+      {{#if endingAt}}
+        <h5>Fund Ends {{formatDate endingAt}}</h5>
+      {{/if}}
+    </div>
+  </div>
+  <hr>
+  {{> creatorProfile creator}}
+  <hr>
+
+  {{{toJSON creator}}}
+  {{{toJSON}}}
+</template>
+
+<template name='creatorProfile'>
+  <div class="row creator-profile">
+    <div class="col-sm-3">
+      {{> avatar user=avatarUser class='big-avatar'}}
+    </div>
+    <div class="col-sm-9">
+      <h1>{{profile.name}}</h1>
+      <h2>Git: {{profile.login}}</h2>
+      <h2>{{profile.company}}</h2>
+    </div>
+  </div>
 </template>
