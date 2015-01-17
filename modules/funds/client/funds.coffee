@@ -9,6 +9,7 @@ Template.funds.helpers
     fields: [
       key: 'createdAt'
       label: 'Created'
+      sort: 'desc'
     ,
       key: 'repo.full_name'
       label: "Repo Name"
