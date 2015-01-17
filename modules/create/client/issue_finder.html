@@ -2,10 +2,22 @@
   <h2>Please select a valid issue to create a fund</h2>
   <p>Issues are valid if:</p>
   <ul>
-    <li>The issue is open</li>
-    <li>You are a collaborator of the repository</li>
     <li>The repositroy is public</li>
+    <li>The issue is open</li>
   </ul>
+
+  <hr>
+  <h3><small>Either</small> Paste the Github issue URL</h3>
+  <div class="input-group input-group-lg">
+    <input id='github-issue-url' type="text" class='form-control input-block' placeholder='Paste any Github Issue URL Here'>
+    <span class="input-group-btn">
+      <button class="btn btn-primary submit-github-url" type="button">Go</button>
+    </span>
+  </div>
+
+  <hr>
+
+  <h3><small>...or</small> Select from your available open issues</h3>
 
   {{#if issues}}
     {{> reactiveTable settings=tableSettings}}

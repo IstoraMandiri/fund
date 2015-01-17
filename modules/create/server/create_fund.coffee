@@ -18,18 +18,18 @@ Meteor.methods
       throw new Meteor.Error 'You must be logged in using github to create a fund'
 
 
-    syncGithubCall = (url) ->
+    syncGithubCall = (url, ignoreError) ->
       do Meteor.wrapAsync (callback) ->
         Meteor.http.get url,
           headers : {"User-Agent" : "Meteor/1.0"}
           params: {access_token: githubToken} # use user's token to prevent rate limiting
         , (err, res) ->
-          if err
+          if err and !ignoreError
             throw new Meteor.Error err
           else
             callback null, res
 
-    isCollaborator = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/collaborators/#{user.services?.github?.username}", githubToken
+    isCollaborator = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/collaborators/#{user.services?.github?.username}", true
     repoRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}" # get public repo details
     issueRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/issues/#{options.issue_number}" # get public issue details
 
