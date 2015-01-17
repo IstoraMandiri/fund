@@ -37,6 +37,7 @@ Template.issue_finder.helpers
     ,
       label: 'Comments'
       key: 'comments'
+      sort: 'desc'
     ]
 
 createFund = (thisIssue) ->

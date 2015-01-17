@@ -1,7 +1,7 @@
 <template name="issue_finder">
   <h2>Create a fund by specifying an open Github issue</h2>
   <hr>
-  <h3><small>Either</small> Paste the Github issue URL</h3>
+  <h3>Paste the Github issue URL</h3>
   <div class="input-group input-group-lg">
     <input id='github-issue-url' type="text" class='form-control input-block' placeholder='Paste any Github Issue URL Here'>
     <span class="input-group-btn">
@@ -9,19 +9,15 @@
     </span>
   </div>
 
-  <hr>
-
-  <h3><small>...or</small> Select from the repositories you can collaborate on</h3>
-
   {{#if issues}}
-    <div class="issues-table">
-      {{> reactiveTable settings=tableSettings}}
+    <div class="issues-finder">
+      <hr>
+      <h3><small>...or</small> Select an issue from the repositories you can collaborate on</h3>
+      <div class="issues-table">
+        {{> reactiveTable settings=tableSettings}}
+      </div>
     </div>
-  {{else}}
-    <p>Fetching your issues...</p>
   {{/if}}
-
-  <p>Can't find any issues? Please start by creating one on a repository you have write permission to.</p>
 </template>
 
 
