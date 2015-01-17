@@ -1,7 +1,9 @@
 profiles = new ReactiveDict()
 
 Template.creatorProfileTab.created = ->
-  # console.log @
-  # TODO Get User Profile
-  # $.get("https://api.github.com/users/#{fund.repo.full_name}/issues/#{fund.issue.number}").done (data) ->
-    # issue.set fund._id, data
+  creatorGithub = @data.creator().profile.login
+  $.get("https://api.github.com/users/#{creatorGithub}").done (data) ->
+    profiles.set creatorGithub, data
+
+Template.creatorProfileTab.helpers
+  githubData: -> profiles.get @profile.login
