@@ -1,0 +1,48 @@
+<template name="githubIssueTab">
+  {{#unless issue}}
+    {{> spinner}}
+  {{else}}
+    {{> fundGithubIssue issue}}
+    <div class="clearfix"></div>
+    <hr>
+    {{> fundGithubComments}}
+  {{/unless}}
+</template>
+
+<template name="fundGithubIssue">
+    <div class="col-sm-12">
+      <h3>#{{number}} <a href="{{html_url}}" target="_blank">{{title}}</a></h3>
+      <h4>
+        <small>Opened by</small> <a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser size='small' shape='circle'}} {{user.login}}</a>, {{created_at}}. <small>Updated </small> {{updated_at}}
+    </h4>
+  </div>
+  <div class="col-sm-12">
+    {{#markdown}}{{body}}{{/markdown}}
+  </div>
+</template>
+
+<template name="fundGithubComments">
+  <h5>Github Comments</h5>
+  {{#unless commentsLoaded}}
+    {{> spinner}}
+  {{else}}
+    <ul class="list-group">
+      {{#each comments}}
+        <li class="list-group-item">
+          <div class="github-comment">
+            <div class="github-commment-info">
+              <h5><a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser shape='circle'}} {{user.login}}</a>, <small><a href="{{html_url}}" target="_blank">{{created_at}}</a></small></h5>
+            </div>
+            <div class="github-comment-body">
+              {{#markdown}}{{body}}{{/markdown}}
+            </div>
+          </div>
+        </li>
+      {{else}}
+      <li class="list-group-item">
+        <p>No Comments</p>
+      </li>
+    {{/each}}
+    </ul>
+  {{/unless}}
+</template>

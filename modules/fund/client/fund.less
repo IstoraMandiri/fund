@@ -1,0 +1,45 @@
+.fund-title{
+  h3{
+    margin-top:0;
+  }
+}
+.fund-owner{
+  display:inline-block;
+  padding-right:8px;
+  margin-right:5px;
+  border-right:1px solid #ccc;
+  &:last-child{
+    margin-right:0;
+    border-right:none;
+    padding-right:0;
+  }
+  .avatar{
+    display:inline-block;
+  }
+}
+.fund-info{
+  margin-top:20px;
+}
+.avatar{
+  display:inline-block;
+}
+a[href^="http://github"],
+a[href^="https://github"],
+a[href^="http://www.github"],
+a[href^="https://www.github"] {
+  position: relative;
+  &:hover:after{
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    content: '';
+    position:absolute;
+    z-index:1;
+    right:0;
+    top:-2px;
+    opacity:0.6;
+    line-height: 0px;
+    color:black;
+    font-size:0.7em;
+    // margin: 0 0 0 px;
+  }
+}

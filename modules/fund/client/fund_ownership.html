@@ -1,0 +1,14 @@
+<template name="fundOwnership">
+  <div class="fund-owners">
+    {{#each owners}}
+      <div class="fund-owner">
+        <a href="{{user.html_url}}" target="_blank">
+          {{> avatar user=avatarUser shape='circle' size='small'}}
+          {{user.login}}
+        </a>
+        <small>{{label}}</small>
+      </div>
+    {{/each}}
+  </div>
+</template>
+

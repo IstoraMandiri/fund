@@ -8,13 +8,15 @@ cleanUrls = (obj) ->
 
 Meteor.methods
   createFund : (options) ->
+    unless options.issue_number and options.repo_name
+      throw new Meteor.Error 'Invalid params'
+
     user = Meteor.users.findOne Meteor.userId()
     githubToken = user.services?.github?.accessToken
 
     unless githubToken
       throw new Meteor.Error 'You must be logged in using github to create a fund'
-    else unless options.issue_number and options.repo_name
-      throw new Meteor.Error 'Invalid params'
+
 
     syncGithubCall = (url) ->
       do Meteor.wrapAsync (callback) ->
@@ -49,7 +51,7 @@ Meteor.methods
     unless fund.issue.state is 'open'
       throw new Meteor.Error 'Issue must be open'
 
-    if Fund.cols.Funds.findOne {'issue.id' : fund.issue.id, 'creatorId': user._id}
+    if App.cols.Funds.findOne {'issue.id' : fund.issue.id, 'creatorId': user._id}
       throw new Meteor.Error 'You have already created a fund on this issue'
 
-    return Fund.cols.Funds.insert fund
+    return App.cols.Funds.insert fund

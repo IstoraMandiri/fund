@@ -1,6 +1,6 @@
 Router.route '/funds',
   data:
-    funds: -> Fund.cols.Funds.find({}, {sort:{createdAt: -1}})
+    funds: -> App.cols.Funds.find({}, {sort:{createdAt: -1}})
 
 Template.funds.helpers
   tableSettings : ->

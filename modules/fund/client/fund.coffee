@@ -1,21 +1,29 @@
-githubComments = new ReactiveDict()
+activeTab = new ReactiveVar()
 
-Router.route '/fund/:_id',
-  template: 'fund'
+Router.route '/fund/:_id', ->
+  fund = => App.cols.Funds.findOne @params._id
+
+  activeTab.set 'fundDetails'
+
+  if fund()
+    @render 'fund',
+      data: fund
+  else
+    @render 'spinner'
+,
   name: 'fund'
-  onBeforeAction: ->
-    fund = Fund.cols.Funds.findOne @params._id
-    if fund
-      $.get("https://api.github.com/repos/#{fund.repo.full_name}/issues/#{fund.issue.number}/comments").done (data) ->
-        githubComments.set fund._id, data
 
-    @next()
-  data: ->
-    thisId = @params._id
-    fund: -> Fund.cols.Funds.findOne thisId
-    githubComments: -> githubComments.get thisId
+
+Template.fund.helpers
+  tabTemplate: -> Template["#{activeTab.get()}Tab"]
+  activeTabIs: (tab) -> activeTab.get() is tab
+  isOwner: -> @creatorId is Meteor.userId()
+  fundCreatorIsIssueCreator: -> @creatorId is @
 
 Template.fund.events
-  'click .history-back a' : (e) ->
+  'click .history-back' : (e) ->
     e.preventDefault()
     history.back()
+
+  'click .tab-switch' : (e) ->
+    activeTab.set $(e.currentTarget).data('tab')

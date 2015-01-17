@@ -1,3 +1,3 @@
-@Fund || @Fund = {} # init @Fund if it isn't defined yet
+@App || @App = {} # init @App if it isn't defined yet
 
-@Fund.cols = {}
+@App.cols = {}

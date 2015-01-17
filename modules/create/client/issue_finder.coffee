@@ -21,7 +21,7 @@ Router.route '/create',
 Template.issue_finder.helpers
   tableSettings: ->
     collection: issues.get()
-    rowClass: (row) -> 'success' if Fund.cols.Funds.findOne 'issue.id' : row.id
+    rowClass: (row) -> 'success' if App.cols.Funds.findOne 'issue.id' : row.id
 
     rowsPerPage : 30
     fields: [
@@ -43,7 +43,7 @@ Template.issue_finder_issue_cell.events
   'click .new-issue' : (e) ->
     e.preventDefault()
     $target = $(e.currentTarget)
-    exsistingFund = Fund.cols.Funds.findOne {creatorId: Meteor.userId() , 'issue.id': @id}
+    exsistingFund = App.cols.Funds.findOne {creatorId: Meteor.userId() , 'issue.id': @id}
     thisIssue = @
     if exsistingFund
       Router.go 'fund' , _id: exsistingFund._id
