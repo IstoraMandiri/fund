@@ -8,9 +8,9 @@
     <ul class="nav nav-tabs">
       <li role="presentation" class="{{#if activeTabIs 'fundDetails'}}active{{/if}}"><a class='tab-switch' href="#" data-tab='fundDetails'>Fund Details</a></li>
       <li role="presentation" class="{{#if activeTabIs 'githubIssue'}}active{{/if}}"><a class='tab-switch' href="#" data-tab='githubIssue'>Github Issue</a></li>
-
+      <li role="presentation" class="{{#if activeTabIs 'fundActivity'}}active{{/if}}"><a class='tab-switch' href="#" data-tab='fundActivity'>Activity</a></li>
       {{#if isOwner}}
-        <li role="presentation" class="{{#if activeTabIs 'fundSettings'}}active{{/if}}"><a class='tab-switch' href="#" data-tab='fundSettings'>Edit Fund</a></li>
+        <li role="presentation" class="{{#if activeTabIs 'fundSettings'}}active{{/if}}"><a class='tab-switch' href="#" data-tab='fundSettings'>Settings</a></li>
       {{/if}}
     </ul>
     {{> tabTemplate}}

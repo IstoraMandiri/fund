@@ -30,17 +30,13 @@ Meteor.methods
             callback null, res
 
     isCollaborator = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/collaborators/#{user.services?.github?.username}", githubToken
-
-    unless isCollaborator.headers.status is "204 No Content" # https://developer.github.com/v3/repos/collaborators/#get
-      throw new Meteor.Error 'You can only create funds for repos that you are a collaborator of right now'
-
     repoRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}" # get public repo details
     issueRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/issues/#{options.issue_number}" # get public issue details
-
 
     fund =
       published: false
       creatorId: user._id
+      creatorIsCollaborator: isCollaborator.headers.status is "204 No Content"
       issue: cleanUrls issueRes.data
       repo: cleanUrls repoRes.data
       createdAt: new Date()

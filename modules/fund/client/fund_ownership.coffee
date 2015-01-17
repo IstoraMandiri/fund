@@ -1,43 +1,23 @@
 Template.fundOwnership.helpers
   owners: ->
     repoOwner = @repo.owner
-    issueOwner = @issue.user
     fundOwner = @creator()?.profile
 
-    unless repoOwner and issueOwner and fundOwner
+    unless repoOwner and fundOwner
       return []
 
-    else if repoOwner.login is issueOwner.login is fundOwner.login
+    if fundOwner.login is repoOwner.login
       users = [
-        label: 'Fund Creator, Issue Author and Repository Collaborator'
+        label: 'Fund Creator and Respository Owner'
         user: fundOwner
-      ]
-
-    else if fundOwner.login is issueOwner.login
-      users = [
-        label: 'Fund Creator and Issue Author'
-        user: fundOwner
-      ,
-        label: 'Repository Owner'
-        user: repoOwner
-      ]
-
-    else if fundOwner.login is repoOwner.login
-      users = [
-        label: 'Fund Creator and Respository Collaborator'
-        user: fundOwner
-      ,
-        label: 'Issue Author'
-        user: issueOwner
+        collaborator: true
       ]
 
     else
       users = [
         label: 'Fund Creator'
         user: fundOwner
-      ,
-        label: 'Issue Author'
-        user: issueOwner
+        collaborator: @creatorIsCollaborator
       ,
         label: 'Respository Owner'
         user: repoOwner

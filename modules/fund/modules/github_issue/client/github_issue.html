@@ -13,7 +13,7 @@
     <div class="col-sm-12">
       <h3>#{{number}} <a href="{{html_url}}" target="_blank">{{title}}</a></h3>
       <h4>
-        <small>Created by</small> <a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser size='small' shape='circle'}} {{user.login}}</a>, {{formatDate created_at}} <small>updated {{formatDate updated_at}}</small>
+        <small>Created by</small> <a href="{{user.html_url}}" target="_blank">{{> avatar user=avatarUser size='small' shape='circle'}} {{user.login}}</a>, {{formatDate created_at}} {{#unless _equal created_at updated_at}}<small>updated {{formatDate updated_at}}</small>{{/unless}}
     </h4>
   </div>
   <div class="col-sm-12">
