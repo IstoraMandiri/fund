@@ -3,7 +3,7 @@
     <div class="panel-heading"><h5 style='margin:0;'>Fund Progress: {{percentOfGoal}}%</h5></div>
     <div class="panel-body">
       <div class="progress">
-        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{percentOfGoal}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentOfGoal}}%">
+        <div class="progress-bar progress-bar-{{pbColor}} {{#unless fund.targetReached}}progress-bar-striped active{{/unless}}" role="progressbar" aria-valuenow="{{percentOfGoal}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentOfGoal}}%">
           <span class="sr-only">{{percentOfGoal}}% Complete</span>
         </div>
       </div>

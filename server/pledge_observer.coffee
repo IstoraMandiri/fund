@@ -10,10 +10,14 @@ recalculateFund = (doc) ->
       totalRaised:
         $sum: "$amount"
   ]
+  fund = App.cols.Funds.findOne doc.fundId
+  newTotal = total[0].totalRaised
+
+  update = {'fund.amountRaised': newTotal}
+  update['fund.targetReached'] = newTotal >= fund.fund.targetAmount
 
   App.cols.Funds.update doc.fundId,
-    $set:
-      'fund.amountRaised': total[0].totalRaised
+    $set: update
 
 Meteor.startup ->
   App.cols.Pledges.find().observe
