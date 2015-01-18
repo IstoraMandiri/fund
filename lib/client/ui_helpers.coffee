@@ -1,3 +1,5 @@
+CURRENCY = "$"
+
 helpers =
   _equals: (var1, var2) -> var1 is var2
 
@@ -23,6 +25,25 @@ helpers =
   countTo: (num) -> [0...num]
 
   routeName: -> Router.current().route.getName()
+
+  formatCurrency : (nStr, hideSign) ->
+    if !nStr?
+      return ' -'
+    nStr += ''
+    x = nStr.split('.')
+    x1 = x[0]
+    x2 = if (x.length > 1) then ('.' + x[1]) else ''
+    rgx = /(\d+)(\d{3})/
+    while rgx.test(x1)
+      x1 = x1.replace(rgx, '$1' + ',' + '$2')
+
+    numberString = x1 + x2
+    if hideSign is 'hide'
+      sign = ''
+    else
+      sign = CURRENCY || ''
+    return "#{sign}#{numberString}"
+
 
 
 # register helpers

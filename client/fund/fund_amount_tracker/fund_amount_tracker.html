@@ -4,17 +4,17 @@
     <div class="panel-body">
       <div class="progress">
         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{percentOfGoal}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentOfGoal}}%">
-          <span class="sr-only">45% Complete</span>
+          <span class="sr-only">{{percentOfGoal}}% Complete</span>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-4">
           <h6>Current:</h6>
-          <p>{{fund.amountRaised}}</p>
+          <p>{{formatCurrency fund.amountRaised}}</p>
         </div>
         <div class="col-xs-4">
           <h6>Target:</h6>
-          <p>{{fund.targetAmount}}</p>
+          <p>{{formatCurrency fund.targetAmount}}</p>
         </div>
         <div class="col-xs-4">
           <h6>Ends:</h6>

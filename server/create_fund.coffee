@@ -15,7 +15,7 @@ cleanFund = (rawIssue) ->
   """
 
   fund.amountRaised = 0
-  fund.stars = []
+  fund.targetAmount = 500
 
   return fund
 
