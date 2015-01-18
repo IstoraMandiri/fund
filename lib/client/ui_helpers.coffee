@@ -22,6 +22,9 @@ helpers =
 
   countTo: (num) -> [0...num]
 
+  routeName: -> Router.current().route.getName()
+
+
 # register helpers
 for key, val of helpers
   UI.registerHelper key, val

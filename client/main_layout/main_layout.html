@@ -1,9 +1,12 @@
 <template name="main_layout">
-  {{> main_menu}}
-  <div class="container">
-    {{> yield "aboveContent"}}
-    {{> yield}}
-    {{> yield "belowContent"}}
+  <div class="wrapper wrapper-{{routeName}}">
+    {{> main_menu}}
+    <div class="container container-{{routeName}}">
+      {{> yield "aboveContent"}}
+      <div class="main-content">
+        {{> yield}}
+      </div>
+    </div>
   </div>
 </template>
 
