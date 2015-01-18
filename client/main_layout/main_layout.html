@@ -1,8 +1,9 @@
 <template name="main_layout">
   {{> main_menu}}
   <div class="container">
-
+    {{> yield "aboveContent"}}
     {{> yield}}
+    {{> yield "belowContent"}}
   </div>
 </template>
 

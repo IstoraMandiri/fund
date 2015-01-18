@@ -1,23 +1,17 @@
 <template name="fund">
-  <div class="fund-container">
-    <div class="fund-header">
-      <div class="row">
-        <div class="col-md-8">
-          {{> fundTitle}}
-          {{> fundOwnership}}
-        </div>
-        <div class="col-md-4">
-          {{> fundAmountTracker}}
-        </div>
+  <div class="fund-header">
+    <div class="row">
+      <div class="col-md-8">
+        {{> fundTitle}}
+        {{> fundOwnership}}
+      </div>
+      <div class="col-md-4">
+        {{> fundAmountTracker}}
       </div>
     </div>
-    <div class="fund-info">
-      {{> fundSubMenu}}
-      {{> tabTemplate}}
-    </div>
-    <div class="fund-footer">
-
-    </div>
+  </div>
+  <div class="fund-info">
+    {{> fundSubMenu}}
   </div>
 </template>
 
@@ -39,34 +33,34 @@
 
 <template name="fundSubMenu">
   <ul class="nav nav-tabs">
-    <li role="presentation" class="{{#if activeTabIs 'fundDetails'}}active{{/if}}">
-      <a class='tab-switch' href="#" data-tab='fundDetails'>
+    <li role="presentation" class="{{#if activeTabIs 'details'}}active{{/if}}">
+      <a class='tab-switch' href="{{pathFor 'fundTab' slug='details'}}">
         <i class='fa fa-fw fa-rocket'></i> Fund
       </a>
     </li>
-    <li role="presentation" class="{{#if activeTabIs 'creatorProfile'}}active{{/if}}">
-      <a class='tab-switch' href="#" data-tab='creatorProfile'>
+    <li role="presentation" class="{{#if activeTabIs 'developer'}}active{{/if}}">
+      <a class='tab-switch' href="{{pathFor 'fundTab' slug='developer'}}">
         <i class='fa fa-fw fa-keyboard-o'></i> Developer
       </a>
     </li>
-    <li role="presentation" class="{{#if activeTabIs 'fundComments'}}active{{/if}}">
-      <a class='tab-switch' href="#" data-tab='fundComments'>
+    <li role="presentation" class="{{#if activeTabIs 'comments'}}active{{/if}}">
+      <a class='tab-switch' href="{{pathFor 'fundTab' slug='comments'}}">
         <i class='fa fa-fw fa-comments'></i>  Comments
       </a>
     </li>
-    <li role="presentation" class="{{#if activeTabIs 'githubIssue'}}active{{/if}}">
-      <a class='tab-switch' href="#" data-tab='githubIssue'>
+    <li role="presentation" class="{{#if activeTabIs 'issue'}}active{{/if}}">
+      <a class='tab-switch' href="{{pathFor 'fundTab' slug='issue'}}">
         <i class='fa fa-fw fa-github-alt'></i> Git Issue
       </a>
     </li>
-    <li role="presentation" class="{{#if activeTabIs 'fundActivity'}}active{{/if}}">
-      <a class='tab-switch' href="#" data-tab='fundActivity'>
+    <li role="presentation" class="{{#if activeTabIs 'activity'}}active{{/if}}">
+      <a class='tab-switch' href="{{pathFor 'fundTab' slug='activity'}}">
         <i class='fa fa-fw fa-line-chart'></i> Activity
       </a>
     </li>
     {{#if isOwner}}
-      <li role="presentation" class="{{#if activeTabIs 'fundSettings'}}active{{/if}}">
-        <a class='tab-switch' href="#" data-tab='fundSettings'>
+      <li role="presentation" class="{{#if activeTabIs 'settings'}}active{{/if}}">
+        <a class='tab-switch' href="{{pathFor 'fundTab' slug='settings'}}">
           <i class='fa fa-fw fa-cog'></i> Settings
         </a>
       </li>
