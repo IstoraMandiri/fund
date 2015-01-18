@@ -5,7 +5,12 @@ helpers =
 
   _multiply: (var1, var2) -> var1 * var2
 
-  toJSON: (obj) -> marked "```" + JSON.stringify((obj || @), null, 2) + "```"
+  toJSON: (obj) ->
+    marked """
+      ```
+      #{JSON.stringify((obj || @), null, 2)}
+      ```
+    """
 
   avatarUser : (owner={}) ->
     login = @services?.github?.username || owner.login || @user?.login || @login
