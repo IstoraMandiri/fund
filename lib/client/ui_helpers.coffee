@@ -17,6 +17,8 @@ helpers =
     Router.current().route.getName() is route
 
   formatDate : (date, str) ->
+    unless date
+      return false
     if str instanceof String
       moment(date).format(str)
     else

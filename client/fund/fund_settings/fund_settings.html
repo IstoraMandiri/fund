@@ -1,15 +1,43 @@
 <template name="fundSettingsTab">
-  <p>Todo add a submenu</p>
   <form class='fund-settings'>
-    <button type="submit" class="pull-right save-changes btn btn-success">Save Changes</button>
-    <h4>Fund Details</h4>
-    <div class="form-group">
-      <label>Fund Title</label>
-      <input type="text" class="form-control" name='fund.title' value='{{fund.title}}'>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Fund Details</h4>
+        <button type="submit" class="pull-right save-changes btn btn-success">Save Changes</button>
+      </div>
     </div>
-    <div class="form-group">
-      <label>Fund Description (supports <a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GFM</a>)</label>
-      <textarea class="form-control description-input" name='fund.body'>{{fund.body}}</textarea>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Fund Title</label>
+          <input type="text" class="form-control" name='fund.title' value='{{fund.title}}'>
+        </div>
+        <div class="form-group">
+          <label>Fund Tagline</label>
+          <textarea class="form-control tagline-input"
+          name='fund.tagline'>{{fund.tagline}}</textarea>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Target Amount</label>
+          <input class='form-control' name='fund.targetAmount' type="number" value="{{fund.targetAmount}}">
+        </div>
+        <div class="form-group">
+          <label>Target Date</label>
+          <input class='form-control' name='fund.targetDate' type="date" value="{{fund.targetDate}}">
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Fund Description (supports <a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GFM</a>)</label>
+          <textarea class="form-control description-input"
+          name='fund.body'>{{fund.body}}</textarea>
+        </div>
+      </div>
     </div>
   </form>
 </template>

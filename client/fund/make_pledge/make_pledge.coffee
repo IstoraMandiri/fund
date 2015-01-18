@@ -6,7 +6,7 @@ Template.makePledgeTab.events
 
     EZModal
       title: "Please Confirm"
-      bodyHtml: "<p>Make a pledge for <strong>#{amount}</strong></p><p>on <strong>#{@fund.title}</strong>"
+      bodyHtml: "<p>Make a pledge for <strong>#{App.helpers.formatCurrency amount}</strong></p><p>on <strong>#{@fund.title}</strong>"
       leftButtons : [ html : 'Cancel' ]
       rightButtons: [
         html: 'Confirm'
@@ -27,9 +27,13 @@ Template.makePledgeTab.helpers
       key: 'createdAt'
       label: 'Created'
       sort: 'desc'
+      sortByValue: true
+      fn: (val) -> App.helpers.formatDate val
     ,
       key: 'amount'
       label: "Amount"
+      sortByValue: true
+      fn: (val) -> App.helpers.formatCurrency val
     ,
       key: 'user.login'
       label: 'User Login'

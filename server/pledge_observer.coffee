@@ -10,6 +10,7 @@ recalculateFund = (doc) ->
       totalRaised:
         $sum: "$amount"
   ]
+
   fund = App.cols.Funds.findOne doc.fundId
   newTotal = total[0].totalRaised
 
@@ -24,4 +25,4 @@ Meteor.startup ->
     _suppress_initial: true
     added : recalculateFund
     removed : recalculateFund
-    updated : recalculateFund
+    changed : recalculateFund

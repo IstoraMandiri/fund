@@ -27,6 +27,7 @@
       <span class='text-muted'>/</span>
       <a href="{{creator.profile.html_url}}" target="_blank">{{creator.profile.login}}</a>
     </h3>
+    <h4 class='text-muted'>{{#markdown}}{{fund.tagline}}{{/markdown}}</h4>
   </div>
 </template>
 
@@ -66,7 +67,7 @@
     {{#if isOwner}}
       <li role="presentation" class="{{#if activeTabIs 'settings'}}active{{/if}}">
         <a class='tab-switch' href="{{pathFor 'fundTab' slug='settings'}}">
-          <i class='fa fa-fw fa-cog'></i> Settings
+          <i class='fa fa-fw fa-cog'></i>
         </a>
       </li>
     {{/if}}
