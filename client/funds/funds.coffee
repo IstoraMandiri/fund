@@ -24,6 +24,14 @@ Template.funds.helpers
       label: 'Creator'
       key: 'creatorId'
       fn: (val) -> Meteor.users.findOne(val)?.profile.login
+    ,
+      label: 'Raised'
+      key: 'fund.amountRaised'
+      fn: (val) -> App.helpers.formatCurrency val
+    ,
+      label: 'target'
+      key: 'fund.targetAmount'
+      fn: (val) -> App.helpers.formatCurrency val
     ]
 
     # console.log 'hello table', @
