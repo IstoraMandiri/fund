@@ -38,6 +38,11 @@
         <i class='fa fa-fw fa-rocket'></i> Fund
       </a>
     </li>
+    <li role="presentation" class="{{#if activeTabIs 'pledge'}}active{{/if}}">
+      <a class='tab-switch' href="{{pathFor 'fundTab' slug='pledge'}}">
+        <i class='fa fa-fw fa-money'></i> Pledge
+      </a>
+    </li>
     <li role="presentation" class="{{#if activeTabIs 'developer'}}active{{/if}}">
       <a class='tab-switch' href="{{pathFor 'fundTab' slug='developer'}}">
         <i class='fa fa-fw fa-keyboard-o'></i> Developer

@@ -1,5 +1,6 @@
 slugs =
   'details':'fundDetails'
+  'pledge':'makePledge'
   'developer':'creatorProfile'
   'comments':'fundComments'
   'issue':'githubIssue'
@@ -8,22 +9,23 @@ slugs =
 
 
 Router.route '/fund/:_id', ->
+  $(window).scrollTop(0)
   @redirect @originalUrl + '/details'
 ,
   name: 'fund'
 
 
+fund = (id) -> App.cols.Funds.findOne id
+
 Router.route '/fund/:_id/:slug', ->
 
-  fund = => App.cols.Funds.findOne @params._id
-
-  if fund()
+  if fund @params._id
     @render 'fund',
       to: 'aboveContent'
-      data: fund
+      data: -> fund @params._id
 
     @render "#{slugs[@params.slug]}Tab",
-      data: fund
+      data: -> fund @params._id
 
   else
     @render 'spinner'

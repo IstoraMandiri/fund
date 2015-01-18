@@ -1,0 +1,33 @@
+<template name="makePledgeTab">
+  {{#unless currentUser}}
+    <div class="alert alert-danger text-center">
+      <strong>Sorry!</strong> You Must be Logged in to Pledge. Please sign in using github.
+    </div>
+  {{/unless}}
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Make a pledge</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Select Pledge Amount</h3>
+      <div class="btn btn-primary make-pledge" data-amount='5'>$5.00</div>
+      <div class="btn btn-primary make-pledge" data-amount='10'>$10.00</div>
+      <div class="btn btn-primary make-pledge" data-amount='50'>$50.00</div>
+    </div>
+    <div class="col-sm-6">
+      <h3>Important Rules</h3>
+      <p>Blah blah blah</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+    <h3>Latest Pledges:</h3>
+    <hr>
+    {{> reactiveTable settings=tableSettings}}
+    </div>
+
+  </div>
+
+</template>
