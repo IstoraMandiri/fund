@@ -72,7 +72,10 @@ createFund = (thisIssue) ->
                 title: "Error!"
                 body: err.error
             else
-              Router.go 'fund', _id: fundId
+              Router.go 'fundTab',
+                _id: fundId
+                slug: 'settings'
+
               EZModal
                 title: 'Setup Wizard'
                 body: 'Blah blah blah'
