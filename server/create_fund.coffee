@@ -14,6 +14,7 @@ cleanFund = (rawIssue) ->
   #{fund.body}
   """
 
+  # XXX why not saved in the subdocument?
   fund.amountRaised = 0
   fund.targetAmount = 500
 
@@ -46,7 +47,6 @@ Meteor.methods
     repoRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}" # get public repo details
     issueRes = syncGithubCall "https://api.github.com/repos/#{options.repo_name}/issues/#{options.issue_number}" # get public issue details
 
-    # TODO integrate into simple schema or collection2
     fund =
       published: false
       creatorId: user._id
@@ -54,7 +54,6 @@ Meteor.methods
       issue: cleanUrls issueRes.data
       fund: cleanFund issueRes.data
       repo: cleanUrls repoRes.data
-      createdAt: new Date()
 
     if fund.repo.private isnt false
       throw new Meteor.Error 'Only public repos are supported right now'
