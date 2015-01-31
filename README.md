@@ -1,47 +1,55 @@
-# MVP
+# TODO for MVP
 
 - ctrl + f TODO
-- Implement Pledges
-- Implement Fund Editing
-	- Minimum requirements for publish
-		- target amount
-		- conclusion datetime
-- `Popular` algorithm
-- implement paypal* || bitcoin || wepay  *preferred?
-- Search funds
-- Proper pub/sub
-- github comments css
-- Implement commenting via github?
-	- will it get too frangmented if not?
-	- potential issue with deleted/edited github comments
-	- Probably need to implement our own system to prevent editing
+- Implement Pub/Sub
+- Better Searching Interface
+- Some algorithm for featured on front page
+- Front page info
+- Payment gateway
+- Security
+	- Allow / Deny
+	- Methods + DB Auth
+	- XSS / Markdown Filtering
+- Fund Interface
+	- (?) Idea: Combine github / comments / activity into one tab with filters
+	- Github
+		- Better comments css
+	- Settings / Editing
+		- 'Publish process' validation
+			- target amount
+			- conclusion datetime
+			- etc. ?
+	- Pledging
+		- Tie in to payment gateway
+		- Decide on method of updating fund totalRaised
+	- Comments
+- Events System
+	- Triggers (+ Tests for)
+		- Fund Details Updated
+		- Fund Published
+		- Pledge Made
+		- Goal Reached
+		- Goal Missed
+		- Fund Cancelled
+		- etc...
+			- Think about all possible events
+	- Notification Types
+		- Email
+		- In-app notification
+		- Github Comment
+		- More?
 
-# Maybe MVP
-
-- Triggers for
-	- Fund CRUD
-	- Pledge Creation
-	- Goal Reached
-	- Goal Missed
-	- etc...
-- Triggers can pipe to
-	- Email
-	- In-app notification
-	- Github Comment
-- Option for owners to personalise triggers (eg. on publish)
 
 # Afer MVP
 
+- Reputation System
+- Star / Follow Fund
+- Option for owners to personalise triggers (eg. on publish)
 - Integrate non-github users
-- Integrate non-collaborator funds
-- Auto-posting bot ('A fund has been created!')
-	- Via logged in user
-- Follow this fund
-	-  receive email updates
 - Upload fund image, video, etc. more customisation. custom css?
-- Follow funds
 
-# Ideas
+
+# Ideas / Icebox
 
 - Private funding
 	- If a fund is made on a private repo, only allow collaborators to see and pledge
