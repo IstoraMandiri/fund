@@ -1,10 +1,12 @@
 Meteor.methods
-  makePledge : (fundId, amount) ->
+  makePledge : (options) ->
     user = Meteor.users.findOne @userId
-    fund = App.cols.Funds.findOne fundId
+    fund = App.cols.Funds.findOne options.fundId
+    bonus = App.cols.Bonuses.findOne options.bonusId
 
-    # do some validation
+    # TODO do some validation
     # min/max amount, etc.
+    # validate bonus is available
 
     unless user and fund
       throw new Meteor.Error 'Incorrect params'
@@ -13,8 +15,9 @@ Meteor.methods
       userId: user._id
       user: user.profile
       fundId: fund._id
+      bonus: bonus
       createdAt: new Date()
-      amount: amount
+      amount: options.amount
 
     unless newPledge
       throw new Meteor.Error 'Error creating pledge'

@@ -15,17 +15,17 @@ Router.route '/fund/:_id', ->
   name: 'fund'
 
 
-fund = (id) -> App.cols.Funds.findOne id
+getFund = (_id) -> App.cols.Funds.findOne _id
 
 Router.route '/fund/:_id/:slug', ->
 
-  if fund @params._id
+  if getFund @params._id
     @render 'fund',
       to: 'aboveContent'
-      data: -> fund @params._id
+      data: -> getFund @params._id
 
     @render "#{slugs[@params.slug]}Tab",
-      data: -> fund @params._id
+      data: -> getFund @params._id
 
   else
     @render 'spinner'

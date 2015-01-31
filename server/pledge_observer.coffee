@@ -7,12 +7,12 @@ recalculateFund = (doc) ->
   ,
     $group:
       _id: null
-      totalRaised:
+      amountRaised:
         $sum: "$amount"
   ]
 
   fund = App.cols.Funds.findOne doc.fundId
-  newTotal = total[0].totalRaised
+  newTotal = total[0].amountRaised
 
   update = {'fund.amountRaised': newTotal}
   update['fund.targetReached'] = newTotal >= fund.fund.targetAmount

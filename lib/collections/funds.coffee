@@ -1,10 +1,22 @@
 Funds = new Mongo.Collection 'Funds'
 
 Funds.helpers
-  creator: -> Meteor.users.findOne @creatorId
+  bonuses: (query={}, options={}) ->
+    query.fundId = @_id
+    options.sort?= {}
+    options.sort.minimumPledge = 1
+    App.cols.Bonuses.find query, options
 
-  percentOfGoal: -> Math.ceil((@fund.amountRaised / @fund.targetAmount) * 100) || 0
+  createBonus : ->
+    App.cols.Bonuses.insert {fundId : @_id}
 
-  recentPledges: (limit) -> App.cols.Pledges.find({fundId: @_id}, {sort:{createdAt:-1}, limit:limit})
+  creator: ->
+    Meteor.users.findOne @creatorId
+
+  percentOfGoal: ->
+    Math.floor((@fund.amountRaised / @fund.targetAmount) * 100) || 0
+
+  recentPledges: (limit) ->
+    App.cols.Pledges.find({fundId: @_id}, {sort:{createdAt:-1}, limit:limit})
 
 App.cols.Funds = Funds

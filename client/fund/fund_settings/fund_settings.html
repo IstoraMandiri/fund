@@ -1,9 +1,9 @@
 <template name="fundSettingsTab">
   <form class='fund-settings'>
+    <button type="submit" class="pull-right save-changes btn btn-success">Save Changes</button>
     <div class="row">
       <div class="col-sm-12">
         <h4>Fund Details</h4>
-        <button type="submit" class="pull-right save-changes btn btn-success">Save Changes</button>
       </div>
     </div>
     <div class="row">
@@ -39,5 +39,90 @@
         </div>
       </div>
     </div>
+    <hr>
+    {{> bonusesEditor}}
   </form>
+</template>
+
+<template name="bonusesEditor">
+<div class="row">
+  <div class="col-sm-12">
+    <h4>Bonuses</h4>
+    <div class="list-group bonuses">
+      {{#each bonuses}}
+        <div class="list-group-item">
+          {{#unless isEditingBonus}}
+            <div class="row bonus-item {{#unless enabled}}disabled{{/unless}}">
+              <div class="col-xs-2">
+                <h4 class="list-group-item-heading">
+                  {{formatCurrency minimumPledge}}+
+                </h4>
+              </div>
+              <div class="col-xs-10">
+                <h4 class="list-group-item-heading">{{title}}</h4>
+                <p class="list-group-item-text">{{description}}</p>
+              </div>
+            </div>
+          {{else}}
+            {{> bonusContentEditor}}
+          {{/unless}}
+        </div>
+      {{else}}
+        <div class="list-group-item">
+          <p class='list-group-item-text'>This fund has no bonuses set up</p>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="btn btn-primary create-bonus">Create Bonus</div>
+  </div>
+</div>
+</template>
+
+<template name="bonusContentEditor">
+<form id="edit-bonus">
+  <div class="row">
+    <div class="col-sm-2">
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name='enabled' checked='{{#if enabled}}checked{{/if}}'> <strong>Enabled</strong>
+        </label>
+      </div>
+
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label>Minimum Pledge</label>
+        <input type="number" class="form-control" name='minimumPledge' value='{{minimumPledge}}'>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" name='title' value='{{title}}'>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="form-group">
+        <label>Description (140 chars)</label>
+          <textarea class="form-control description-input-short" name='description'>{{description}}</textarea>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="btn btn-success save-bonus">Save Bonus</div>
+    </div>
+    <div class="col-sm-6 text-right">
+      <div class="btn btn-danger remove-bonus">
+        Remove Bonus
+      </div>
+    </div>
+  </div>
+</form>
 </template>
