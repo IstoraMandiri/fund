@@ -2,10 +2,14 @@
 
 - ctrl + f TODO
 - Implement Pub/Sub
+- Implement Collection2 Schemas
 - Better Searching Interface
 - Some algorithm for featured on front page
 - Front page info
+- Find a Bootswatch?
 - Payment gateway
+	- Refunds
+	- Pay Dev on Goal Reached
 - Security
 	- Allow / Deny
 	- Methods + DB Auth
